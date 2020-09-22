@@ -1,0 +1,14 @@
+.platziconf{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  height: 93.8vh;
+  background: url(../../images/stars.svg), #1b1b25;
+}
+p{
+  margin-bottom: 0,5rem;
+}
+.btn {
+  display: block;
+}

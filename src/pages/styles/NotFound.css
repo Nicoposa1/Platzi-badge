@@ -1,0 +1,8 @@
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 93.5vh;
+  background: url(../../images/stars.svg), #1b1b25;
+  color: white;
+}
