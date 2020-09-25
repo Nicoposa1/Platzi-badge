@@ -14,7 +14,7 @@ class Home extends React.Component {
             <img src={platziconf} alt=""/>
             <h1>print your badges</h1>
             <p>the easiest way to manage your <br/> conference</p>
-            <Link to="/badges/new" className="btn btn-success" >
+            <Link to="/badges/" className="btn btn-success" >
                 Start Now
             </Link>
           </div>
