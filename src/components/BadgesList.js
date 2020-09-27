@@ -1,51 +1,23 @@
 import React from 'react'
 import './styles/BadgesList.css'
 
-import { Link } from 'react-router-dom';
-
-class BadgesListItem extends React.Component {
-  render() {
-    return (
-      <div className="BadgesListItem">
-        <img
-          className="BadgesListItem__avatar"
-          src={this.props.badge.avatarUrl}
-          alt={`${this.props.badge.firstName} ${this.props.badge.lastName}`}
-        />
-
-        <div>
-          <strong>
-            {this.props.badge.firstName} {this.props.badge.lastName}
-          </strong>
-          <br />@{this.props.badge.twitter}
-          <br />
-          {this.props.badge.jobTitle}
-        </div>
-      </div>
-    );
-  }
-}
-
 class BadgesList extends React.Component {
   render() {
-    if (this.props.badges.length === 0) {
-      return (
-        <div>
-          <h3>No badges were found</h3>
-          <Link className="btn btn-primary" to="/badges/new">
-            Create new badge
-          </Link>
-        </div>
-      );
-    }
-
     return (
       <div className="BadgesList">
-        <ul className="list-unstyled">
-          {this.props.badges(badge => {
+        <ul className="list-unstyled BadgesList">
+          {this.props.badges.map(badge => {
             return (
-              <li key={badge.id}>
-                <BadgesListItem badge={badge} />
+              <li className="BadgesListItem" key={badge.id}>
+                <img className="BadgesListItem__avatar" src={badge.avatarUrl} alt="Avatar"/>
+                <div>
+                  <div><p> {badge.firstName} {badge.lastName} </p></div>
+                  <div className="Twitter__name">
+                    <span className="BadgesListItem__Logo"></span> 
+                    @{badge.twitter}
+                  </div>
+                  <div><p>{badge.jobTitle}</p></div>
+                </div>
               </li>
             );
           })}
@@ -54,5 +26,4 @@ class BadgesList extends React.Component {
     );
   }
 }
-
-export default BadgesList;
+export default BadgesList

@@ -5,7 +5,7 @@ import './styles/Badges.css'
 import confLogo from '../images/badge-header.svg'
 import BadgesList from '../components/BadgesList'
 import Loader from '../components/Loader'
-import api from '../api'
+// import api from '../api'
 
 class Badges extends React.Component {
 
