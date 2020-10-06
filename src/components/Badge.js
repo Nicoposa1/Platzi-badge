@@ -10,7 +10,6 @@ class Badge extends React.Component {
       firstName,
       lastName,
       jobTittle,
-      avatarUrl,
       twitter
     } = this.props
     return (
