@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/NotFound.css'
-import stars from '../images/stars.svg'
+// import stars from '../images/stars.svg'
 
 function NotFound(){
   return(<div className="content">

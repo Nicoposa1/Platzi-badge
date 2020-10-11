@@ -48,7 +48,7 @@
   backface-visibility: hidden;
   transform-origin: 0 0; /* see note above */
 }
-.container{
+.container-loader{
   display: flex;
   justify-content: center;
   align-items: center;

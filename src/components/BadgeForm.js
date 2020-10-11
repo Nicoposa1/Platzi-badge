@@ -8,7 +8,6 @@ class BadgeForm extends React.Component{
   render(){
     return (
       <div>
-        <h1>New Attendant</h1>
 
         <form onSubmit={this.props.onSubmit}>
           <div className="form-goup">
@@ -47,8 +46,8 @@ class BadgeForm extends React.Component{
             onChange={this.props.onChange}
             className="form-control" 
             type="text" 
-            name="jobTittle" 
-            value={this.props.formValue.jobTittle} />
+            name="jobTitle" 
+            value={this.props.formValue.jobTitle} />
           </div>
 
           <div className="form-goup">

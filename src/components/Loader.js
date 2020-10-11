@@ -4,7 +4,7 @@ import'./styles/Loader.css'
 class Loader extends React.Component {
   render () {
     return (
-    <div className="container">
+    <div className="container-loader">
       <div className="loadingio-spinner-dual-ball-xufup796s4">
         <div className="ldio-681o1unozd7">
           <div></div><div></div><div></div>

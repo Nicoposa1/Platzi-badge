@@ -1,23 +1,39 @@
 import React from 'react'
 
-import './styles/BadgeNew.css'
+import './styles/BadgeEdit.css'
 import header from '../images/platziconf-logo.svg'
 import BadgeForm from '../components/BadgeForm'
 import Badge from '../components/Badge'
 import PageLoading from '../components/Loader'
 import api from '../api'
 
-class BadgeNew extends React.Component{
+class BadgeEdit extends React.Component{
   state = { 
-    loading:false,
+    loading:true,
     error: null,
     form: {
     firstName:'',
     lastName:'',
     email:'',
-    jobTittle:'',
+    jobTitle:'',
     twitter:'',
   } }
+
+  componentDidMount(){
+    this.fetchData()
+  }
+
+  fetchData = async e => {
+    this.setState({ loading: true, error: null })
+
+    try{
+      const data = await api.badges.read(this.props.match.params.badgeId)
+      this.setState({ loading: false, form: data })
+    }catch(error){
+      this.setState({ loading: false, error: error })
+    }
+  }
+
   handleChange = e => {
     this.setState({
       form: {
@@ -31,7 +47,7 @@ class BadgeNew extends React.Component{
     this.setState({ loading: true, error: null });
 
     try {
-      await api.badges.create(this.state.form);
+      await api.badges.update(this.props.match.params.badgeId, this.state.form);
       this.setState({ loading: false });
 
       this.props.history.push('/badges')
@@ -45,8 +61,8 @@ class BadgeNew extends React.Component{
     }
     return(
       <React.Fragment>
-        <div className="BadgeNew__hero">
-          <img className="BadgeNew__hero-image img-fluid" src={header} alt="logo"/>
+        <div className="BadgeEdit__hero">
+          <img className="BadgeEdit__hero-image img-fluid" src={header} alt="logo"/>
         </div>
 
         <div className="container-badge">
@@ -55,13 +71,13 @@ class BadgeNew extends React.Component{
               <Badge 
               firstName={this.state.form.firstName || 'FIRST_NAME' } 
               lastName={this.state.form.lastName || 'LAST_NAME'}
-              jobTittle={this.state.form.jobTittle || 'JOB_TITTLE'} 
+              jobTitle={this.state.form.jobTitle || 'JOB_TITTLE'} 
               twitter={this.state.form.twitter || 'twitter' } 
               email= {this.state.form.email || 'EMAIL'} 
               avatarUrl="https://es.gravatar.com/userimage/192994403/013c21725ee2b66b21941e678d3bb965.jpg" />
             </div>
             <div className="col-6">
-              <h1>New Attendant</h1>
+              <h1>Edit Attendant</h1>
               <BadgeForm 
               onChange={this.handleChange} 
               onSubmit={this.handleSubmit}
@@ -76,4 +92,4 @@ class BadgeNew extends React.Component{
   }
 }
 
-export default BadgeNew
+export default BadgeEdit
